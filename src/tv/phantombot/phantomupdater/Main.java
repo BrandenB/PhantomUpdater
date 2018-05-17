@@ -72,7 +72,7 @@ public final class Main {
                     break;
             }
             
-            // This should only
+            // This should only null if it's a manual update.
             if (ce != null) {
                 // Run the command.
                 if (ce.exec()) {

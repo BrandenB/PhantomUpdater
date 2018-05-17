@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 
 /**
  *
- * @author Branden
+ * @author ScaniaTV
  */
 public class CommandExecutor {
     // Process builder to run command.
