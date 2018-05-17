@@ -3,19 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tv.phantombot.phantomupdater.types;
+package tv.phantombot.phantomupdater.util;
 
 /**
  *
  * @author ScaniaTV
  */
-public final class LaunchType {
+public final class LaunchTypes {
     /**
      * Enum list of types of ways to launch PhantomBot.
      */
     public static enum Type {
-        SHELL,
+        MANUAL,
         BATCH,
+        SHELL,
         SERVICE
     }
 }

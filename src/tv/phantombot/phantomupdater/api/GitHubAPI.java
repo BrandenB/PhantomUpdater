@@ -30,6 +30,13 @@ public final class GitHubAPI {
     private static final String REPO_NAME = "PhantomBot/PhantomBot";
     
     /**
+     * Class constructor.
+     */
+    private GitHubAPI() {
+        
+    }
+    
+    /**
      * Method that converts a reader into a string.
      * 
      * @param reader

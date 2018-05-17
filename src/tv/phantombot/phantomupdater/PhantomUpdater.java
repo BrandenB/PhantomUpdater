@@ -27,9 +27,16 @@ public final class PhantomUpdater {
     private static final String BACKUP_FILE_PREFIX = "PhantomBot_Backup_";
     
     /**
+     * Class constructor.
+     */
+    private PhantomUpdater() {
+        
+    }
+    
+    /**
      * Method that is used to start the bot update.
      * 
-     * @param backupLocation Location to backup the file too.
+     * @param backupLocation Location to backup the file to.
      */
     public static void update(final String backupLocation) {
         System.out.println("Fetching latest version of PhantomBot...");
@@ -52,7 +59,7 @@ public final class PhantomUpdater {
                 // Print the success message.
                 System.out.println("Successfully updated PhantomBot!");
             } else {
-                System.out.println("Failed to backup... Aborting update.");
+                System.out.println("Failed to download PhantomBot.");
             }
             
             // Delete the zip.

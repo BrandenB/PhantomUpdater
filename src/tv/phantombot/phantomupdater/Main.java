@@ -5,7 +5,8 @@
  */
 package tv.phantombot.phantomupdater;
 
-import tv.phantombot.phantomupdater.types.LaunchType.Type;
+import tv.phantombot.phantomupdater.util.CommandExecutor;
+import tv.phantombot.phantomupdater.util.LaunchTypes.Type;
 
 /**
  *
@@ -16,6 +17,13 @@ public final class Main {
     private static Type launchType;
     // Location where to store the backup.
     private static String backupLocation = null;
+    
+    /**
+     * Class constructor.
+     */
+    private Main() {
+        
+    }
     
     /**
      * Main method where everything starts.
@@ -30,11 +38,11 @@ public final class Main {
                 case "service":
                     launchType = Type.SERVICE;
                     break;
-                case "shell":
-                    launchType = Type.SHELL;
-                    break;
                 case "batch":
                     launchType = Type.BATCH;
+                    break;
+                case "manual":
+                    launchType = Type.MANUAL;
                     break;
                 default:
                     // Return main without any arguments.
@@ -48,12 +56,36 @@ public final class Main {
             
             // Start the update.
             PhantomUpdater.update(backupLocation);
+            
+            // Our command exec.
+            CommandExecutor ce = null;
             // Start PhantomBot again.
+            switch (launchType) {
+                case BATCH:
+                    ce = new CommandExecutor("cmd /c start launch.bat");
+                    break;
+                case SHELL:
+                    ce = new CommandExecutor("sudo ./launch.sh");
+                    break;
+                case SERVICE:
+                    ce = new CommandExecutor("sudo systemctl start phantombot");
+                    break;
+            }
+            
+            // This should only
+            if (ce != null) {
+                // Run the command.
+                if (ce.exec()) {
+                    System.out.println("Launching PhantomBot!");
+                } else {
+                    System.out.println("Failed to launch PhantomBot...");
+                }
+            }
         } else {
             // Print error.
             System.err.println("Failed to get launch type.");
-            // Shutdown the updater.
-            System.exit(0);
         }
+        // Shutdown the updater.
+        System.exit(0);
     }
 }
