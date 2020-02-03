@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tv.phantombot.phantomupdater.api;
 
 
@@ -21,7 +16,7 @@ import org.json.JSONArray;
 
 /**
  *
- * @author ScaniaTV
+ * @author BrandenB
  */
 public final class GitHubAPI {
     // The base API url.
